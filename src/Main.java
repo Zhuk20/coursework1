@@ -47,8 +47,13 @@ public class Main {
             }
         }
     }
-    private static void averageSalary(){
-
+    private static void averageSalary(Employee[] arr){
+        int count = 0;
+        for (Employee employee : arr) {
+            if (employee != null){
+                count++;
+            }
+        }
 
     }
 
