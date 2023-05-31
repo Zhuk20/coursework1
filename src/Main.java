@@ -56,22 +56,22 @@ public class Main {
                 sum += employee.getSalary();
             }
         }
-        return sum /= count;                                    // Выводим среднее арифметическое зарплат всех сотрудников
+        return sum / count;                                    // Выводим среднее арифметическое зарплат всех сотрудников
     }
 
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];
-        employees[0] = new Employee("Иванов", "Иван", "Иванович", 1, 10);
-        employees[1] = new Employee("Сидоров", "Сидор", "Сидорович", 2, 10);
-        employees[2] = new Employee("Петров", "Петр", "Петрович", 3, 8);
-        employees[3] = new Employee("Александров", "Александр", "Александрович", 4, 8);
-        employees[4] = new Employee("Путин", "Владимир", "Владимирович", 5, 800_000);
-        employees[5] = new Employee("Константинов", "Константин", "Константинович ", 1, 8);
+        employees[0] = new Employee("Иванов", "Иван", "Иванович", 1, 2000);
+        employees[1] = new Employee("Сидоров", "Сидор", "Сидорович", 2, 1000);
+        employees[2] = new Employee("Петров", "Петр", "Петрович", 3, 2000);
+        employees[3] = new Employee("Александров", "Александр", "Александрович", 4, 1000);
+        employees[4] = new Employee("Путин", "Владимир", "Владимирович", 5, 1_000_000);
+        employees[5] = new Employee("Константинов", "Константин", "Константинович ", 1, 1000);
         printAllArr(employees);                                 // Получить список всех сотрудников.
         System.out.println(sumSalary(employees));               // Посчитать сумму затрат на зарплаты.
         printMinSalary(employees);                              // Найти сотрудника с минимальной заплатой.
         printMaxSalary(employees);                              // Найти сотрудника с максимальной зарплатой.
-        System.out.println(averageSalary(employees));           // Подсчитать среднее значение зарплат.
-    }
+        System.out.printf("%.2f",averageSalary(employees));           // Подсчитать среднее значение зарплат.
 
+    }
 }

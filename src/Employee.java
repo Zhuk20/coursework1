@@ -1,7 +1,7 @@
 public class Employee {
-    private String name;
-    private String surname;
-    private String patronymic;
+    private final String name;
+    private final String surname;
+    private final String patronymic;
     private int department;
     private int salary;
     private int id;
@@ -11,8 +11,12 @@ public class Employee {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
-        this.department = department;
-        if (salary >= 0) {
+        if (department > 0 && department < 6) {                    // В условии сказано, что у нас пять отделов
+            this.department = department;
+        } else {
+            throw new IllegalArgumentException("в нашей компании всего пять отделов");
+        }
+        if (salary >= 0) {                                           // Не может быть отрицательной зарплаты
             this.salary = salary;
         }
         id = idCount++;
@@ -40,10 +44,7 @@ public class Employee {
     }
 
     public int getSalary() {
-        if (salary >= 0) {
-            return salary;
-        }
-        return salary = 0;
+        return salary;
     }
 
     public void setSalary(int salary) {
