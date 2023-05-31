@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
     private static void printAllArr(Employee[] arr) {   // Распечатать весь массив
         for (Employee employee : arr) {
@@ -64,10 +62,16 @@ public class Main {
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];
         employees[0] = new Employee("Иванов", "Иван", "Иванович", 1, 10);
-        employees[1] = new Employee("Сидоров", "Сидор", "Сидорович", 1, 10);
-        employees[2] = new Employee("Петров", "Петр", "Петрович", 1, 8);
-        System.out.println(averageSalary(employees));
-        printAllArr(employees);
+        employees[1] = new Employee("Сидоров", "Сидор", "Сидорович", 2, 10);
+        employees[2] = new Employee("Петров", "Петр", "Петрович", 3, 8);
+        employees[3] = new Employee("Александров", "Александр", "Александрович", 4, 8);
+        employees[4] = new Employee("Путин", "Владимир", "Владимирович", 5, 800_000);
+        employees[5] = new Employee("Константинов", "Константин", "Константинович ", 1, 8);
+        printAllArr(employees);                                 // Получить список всех сотрудников.
+        System.out.println(sumSalary(employees));               // Посчитать сумму затрат на зарплаты.
+        printMinSalary(employees);                              // Найти сотрудника с минимальной заплатой.
+        printMaxSalary(employees);                              // Найти сотрудника с максимальной зарплатой.
+        System.out.println(averageSalary(employees));           // Подсчитать среднее значение зарплат.
     }
 
 }
