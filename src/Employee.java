@@ -5,7 +5,8 @@ public class Employee {
     private String patronymic;
     private int department;
     private int salary;
-    private static int id;
+    private int id ;
+    private static int idCount =1;
 
     public Employee(String surname, String name, String patronymic, int department, int salary) {
         this.surname = surname;
@@ -15,7 +16,7 @@ public class Employee {
         if (salary>=0) {
             this.salary = salary;
         }
-        id = id++;
+        id = idCount++;
     }
 
     public int getId() {
@@ -61,7 +62,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "| " + getId() + " | " + name + " | " + surname + " | " +
+        return "| " + id + " | " + name + " | " + surname + " | " +
                 patronymic + " | " + department + " | " + salary + " |";
     }
 
