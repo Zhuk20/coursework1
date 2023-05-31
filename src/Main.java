@@ -33,7 +33,7 @@ public class Main {
     }
 
     private static void printMinSalary(Employee[] arr) {     // Печатаем сотрудника у которого самая маленькая зарплата
-        int min = 99999999;
+        int min = 2_147_483_647;
         for (Employee employee : arr) {                      // Ищем минимальное число зарплаты
             if (employee != null) {
                 min = Math.min(min, employee.getSalary());
