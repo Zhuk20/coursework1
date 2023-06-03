@@ -11,15 +11,14 @@ public class Employee {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
-        if (department > 0 && department < 6) {                    // В условии сказано, что у нас пять отделов
-            this.department = department;
-        } else {
+        if (department < 1 || department > 5) {                    // В условии сказано, что у нас пять отделов
             throw new IllegalArgumentException("в нашей компании всего пять отделов");
         }
+        this.department = department;
         if (salary >= 0) {                                           // Не может быть отрицательной зарплаты
             this.salary = salary;
         }
-        id = idCount++;
+        this.id = idCount++;
     }
 
     public int getId() {
@@ -54,10 +53,10 @@ public class Employee {
     }
 
     public void setDepartment(int department) {
-        if (department > 0 && department < 5) {
-            this.department = department;
+        if (department < 1 || department > 5) {                    // В условии сказано, что у нас пять отделов
+            throw new IllegalArgumentException("в нашей компании всего пять отделов");
         }
-        throw new IllegalArgumentException("в нашей компании всего пять отделов");
+        this.department = department;
     }
 
     @Override

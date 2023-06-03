@@ -1,15 +1,15 @@
 public class Main {
-    private static void printAllArr(Employee[] arr) {   // Распечатать весь массив
-        for (Employee employee : arr) {
-            if (employee != null) {                     // Печатаем только заполненые строки массива
+    private static void printAllArr() {   // Распечатать весь массив
+        for (Employee employee : employees) {
+            if (employee != null) {                     // Печатаем только заполненные строки массива
                 System.out.println(employee + " ");
             }
         }
     }
 
-    private static int sumSalary(Employee[] arr) {      // Общая сумма зарплат
+    private static int sumSalary() {      // Общая сумма зарплат
         int sum = 0;
-        for (Employee employee : arr) {
+        for (Employee employee : employees) {
             if (employee != null) {
                 sum += employee.getSalary();
             }
@@ -17,61 +17,68 @@ public class Main {
         return sum;
     }
 
-    private static void printMaxSalary(Employee[] arr) {     // Печатаем сотрудника у которого самая большая зарплата
-        int max = 0;
-        for (Employee employee : arr) {                      // Ищем максимальное число зарплаты
-            if (employee != null) {
-                max = Math.max(max, employee.getSalary());
+    private static void printMaxSalary() {     // Печатаем сотрудника у которого самая большая зарплата
+        Employee max = employees[0];
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() > max.getSalary()) {
+                max = employee;
             }
         }
-        for (Employee employee : arr) {                       // Ищем сотрудника с максимальной зарплатой и печатаем
-            if (employee.getSalary() == max) {
-                System.out.println(employee);
-                break;
-            }
-        }
+        System.out.println("Сотрудник максимальной зарплатой " + max);
     }
 
-    private static void printMinSalary(Employee[] arr) {     // Печатаем сотрудника у которого самая маленькая зарплата
-        int min = 2_147_483_647;
-        for (Employee employee : arr) {                      // Ищем минимальное число зарплаты
-            if (employee != null) {
-                min = Math.min(min, employee.getSalary());
+    private static void printMinSalary() {     // Печатаем сотрудника у которого самая маленькая зарплата
+        Employee min = employees[0];
+        for (Employee employee : employees) {                      // Ищем минимальное число зарплаты
+            if (employee != null && employee.getSalary() < min.getSalary()) {
+                min = employee;
             }
+
         }
-        for (Employee employee : arr) {                       // Ищем сотрудника с минимальной зарплатой и печатаем
-            if (employee.getSalary() == min) {
-                System.out.println(employee);
-                break;
-            }
-        }
+        System.out.println("Сотрудник минимальной зарплатой " + min);
     }
 
-    private static float averageSalary(Employee[] arr) {       // Ищем среднюю зарплату
-        float sum = 0;
+    private static float averageSalary() {       // Ищем среднюю зарплату
         int count = 0;
-        for (Employee employee : arr) {                        // Ищем количество сотрудников и сумму зарплаты всех сотрудников
-            if (employee != null) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null){
                 count++;
-                sum += employee.getSalary();
             }
         }
-        return sum / count;                                    // Выводим среднее арифметическое зарплат всех сотрудников
+        return (float) sumSalary() / count;                      // Выводим среднее арифметическое зарплат всех сотрудников
     }
+
+    private static void printFio() {
+        for (Employee employee : employees) {
+            if (employee == null) {
+                continue;
+            }
+            System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymic());
+
+        }
+    }
+
+    private static final Employee[] employees = new Employee[10];
 
     public static void main(String[] args) {
-        Employee[] employees = new Employee[10];
+
+
         employees[0] = new Employee("Иванов", "Иван", "Иванович", 1, 2000);
         employees[1] = new Employee("Сидоров", "Сидор", "Сидорович", 2, 1000);
         employees[2] = new Employee("Петров", "Петр", "Петрович", 3, 2000);
         employees[3] = new Employee("Александров", "Александр", "Александрович", 4, 1000);
         employees[4] = new Employee("Путин", "Владимир", "Владимирович", 5, 1_000_000);
         employees[5] = new Employee("Константинов", "Константин", "Константинович ", 1, 1000);
-        printAllArr(employees);                                 // Получить список всех сотрудников.
-        System.out.println(sumSalary(employees));               // Посчитать сумму затрат на зарплаты.
-        printMinSalary(employees);                              // Найти сотрудника с минимальной заплатой.
-        printMaxSalary(employees);                              // Найти сотрудника с максимальной зарплатой.
-        System.out.printf("%.2f",averageSalary(employees));           // Подсчитать среднее значение зарплат.
-
+        printAllArr();                                 // Получить список всех сотрудников.
+        System.out.println();
+        System.out.println("Сумма затрат в месяц " + sumSalary());               // Посчитать сумму затрат на зарплаты.
+        System.out.println();
+        printMinSalary();                              // Найти сотрудника с минимальной заплатой.
+        System.out.println();
+        printMaxSalary();                             // Найти сотрудника с максимальной зарплатой.
+        System.out.println();
+        System.out.printf("Средняя сумма зарплат %.2f\n", averageSalary());           // Подсчитать среднее значение зарплат.
+        System.out.println();
+        printFio();                                     // Получить Ф. И. О. всех сотрудников
     }
 }
